@@ -6,13 +6,6 @@
     export let mode='';
     export let isCompleted = false;
 
-    import { spring } from 'svelte/motion';
-
-	let width = spring(0, {
-		stiffness: 0.1,
-		damping: 0.25
-	});
-
     let _mode = ''
     switch (mode) {
         case 'danger':
@@ -31,7 +24,6 @@
             _mode =''
             break;
     }
-    $: width = percent+"%";
 </script>
 
 {#if title.length > 0}
@@ -44,6 +36,6 @@
     </h4>
 {/if}
 <div class="progress mb-4">
-<div class="progress-bar {_mode}" role="progressbar" width={width}
+<div class="progress-bar {_mode}" role="progressbar" style="width:{percent}%"
     aria-valuenow="{percent}" aria-valuemin="{minVal}" aria-valuemax="{maxVal}"></div>
 </div>
